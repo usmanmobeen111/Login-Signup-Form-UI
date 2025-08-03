@@ -2,7 +2,12 @@ import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 
-const SignUp = () => {
+const SignUp = ({ setIsMobileSignUp}) => {
+
+  const stateHandler = () => {
+    setIsMobileSignUp(false);
+  }
+  
   return (
     <div className="w-[90vw] md:w-[30vw] min-h-[100vh] mx-auto flex flex-col justify-center items-center px-4">
       <h1 className="font-extrabold text-2xl font-roboto bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text mb-4">
@@ -74,6 +79,7 @@ const SignUp = () => {
           <span className="font-medium text-sm text-gray-700">GitHub</span>
         </button>
       </div>
+      <p className="block md:hidden my-4 text-sm text-gray-500">Already have an account? <span className="text-sm text-primary cursor-pointer" onClick={stateHandler}>Login</span></p>
     </div>
   );
 };

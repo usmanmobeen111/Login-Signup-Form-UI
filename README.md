@@ -44,7 +44,7 @@
 ## 🔧 Installation & Setup
 
 ```bash
-git clone https://github.com/your-username/react-animated-auth-ui.git
-cd react-animated-auth-ui
+git clone https://github.com/usmanmobeen111/Login-Signup-Form-UI.git
+cd Login-Signup-Form-UI
 npm install
 npm run dev
