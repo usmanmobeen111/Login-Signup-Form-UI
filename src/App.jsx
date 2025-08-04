@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Login from "./Login";
 import SignUp from "./SignUp";
@@ -6,8 +6,15 @@ import Footer from "./Footer";
 
 const App = () => {
   const [isLogin, setIsLogin] = useState(true);
-  const [isMobileSignUp, setIsMobileSignUp] = useState(false);
-  console.log(isMobileSignUp)
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const desktopVariants = {
     login: {
@@ -48,12 +55,12 @@ const App = () => {
       transition: { duration: 0.6 },
     },
     signup: {
-      x: 0,
+      x: "-100%",
       opacity: 1,
       transition: { duration: 0.6 },
     },
     signupHidden: {
-      x: "100%",
+      x: 0,
       opacity: 0,
       transition: { duration: 0.6 },
     },
@@ -62,44 +69,22 @@ const App = () => {
   return (
     <>
       <div className="font-ubuntu bg-gray-200 h-screen w-full flex items-center justify-center">
-        <div className="relative h-[80vh] md:w-[60vw] w-[80vw] bg-white shadow-lg rounded-3xl overflow-hidden flex">
+        <div className="relative md:h-[80vh] h-[85vh] md:w-[60vw] w-[80vw] bg-white shadow-lg rounded-3xl overflow-hidden flex ">
           <div className="w-full h-full flex">
             <motion.div
-              variants={isMobileSignUp ? mobileVariants : desktopVariants}
-              animate={
-                isMobileSignUp
-                  ? isLogin
-                    ? "login"
-                    : "loginHidden"
-                  : isLogin
-                  ? "login"
-                  : "loginHidden"
-              }
+              variants={isMobile ? mobileVariants : desktopVariants}
+              animate={isLogin ? "login" : "loginHidden"}
               className="md:w-1/2 w-full h-full flex items-center justify-center"
             >
-              <Login
-                setIsMobileSignUp={setIsMobileSignUp}
-                setIsLogin={setIsLogin}
-              />
+              <Login setIsLogin={setIsLogin} />
             </motion.div>
 
             <motion.div
-              variants={isMobileSignUp ? mobileVariants : desktopVariants}
-              animate={
-                isMobileSignUp
-                  ? isLogin
-                    ? "signupHidden"
-                    : "signup"
-                  : isLogin
-                  ? "signupHidden"
-                  : "signup"
-              }
+              variants={isMobile ? mobileVariants : desktopVariants}
+              animate={isLogin ? "signupHidden" : "signup"}
               className="md:w-1/2 w-full h-full flex items-center justify-center"
             >
-              <SignUp
-                setIsMobileSignUp={setIsMobileSignUp}
-                setIsLogin={setIsLogin}
-              />
+              <SignUp setIsLogin={setIsLogin} />
             </motion.div>
           </div>
 

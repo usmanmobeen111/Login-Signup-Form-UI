@@ -2,10 +2,9 @@ import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 
-const SignUp = ({ setIsMobileSignUp}) => {
-
+const SignUp = ({ setIsLogin }) => {
   const stateHandler = () => {
-    setIsMobileSignUp(false);
+    setIsLogin(true);
   }
   
   return (

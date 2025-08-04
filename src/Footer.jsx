@@ -17,7 +17,7 @@ const Footer = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3 }}
       >
-        &copy; {new Date().getFullYear()} <span className="font-semibold">CodeWeaver</span> | All Rights Reserved
+        &copy; {new Date().getFullYear()} <span className="font-semibold">Login Signup Form</span> | All Rights Reserved
       </motion.div>
 
       {/* Made with love */}

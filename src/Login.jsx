@@ -2,9 +2,9 @@ import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 
-const Login = ({ setIsMobileSignUp}) => {
-   const stateHandler = () => {
-    setIsMobileSignUp(false);
+const Login = ({ setIsLogin }) => {
+  const stateHandler = () => {
+    setIsLogin(false);
   }
   return (
     <div className="w-[90vw] md:w-[30vw] min-h-[100vh] mx-auto flex flex-col justify-center items-center px-4">
